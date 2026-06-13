@@ -69,15 +69,15 @@
         /* ----- Views ----- */
         .gift-view { display: none; max-width: 700px; margin: 0 auto; animation: fadeIn 0.8s ease; }
         
-        #seal-wrapper { text-align: center; cursor: pointer; padding: 60px 0; }
+        .seal-wrapper { text-align: center; cursor: pointer; padding: 60px 0; }
         .wax-seal {
             width: 90px; height: 90px; background: #991b1b; border-radius: 50%;
             display: inline-flex; align-items: center; justify-content: center;
             font-size: 2.5rem; color: white; box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-            border: 4px solid #7f1d1d; transition: 0.4s; position: relative;
+            border: 4px solid #7f1d1d; transition: 0.4s; position: relative; margin: 0 auto;
         }
         .wax-seal:after { content: '♥'; position: absolute; }
-        #seal-wrapper:hover .wax-seal { transform: scale(1.1) rotate(10deg); background: #b91c1c; }
+        .seal-wrapper:hover .wax-seal { transform: scale(1.1) rotate(10deg); background: #b91c1c; }
 
         .paper-letter {
             display: none; background: var(--parchment); color: #1a1a1a;
@@ -114,7 +114,6 @@
 </head>
 <body>
 
-    <!-- STAGE 1: PIN -->
     <div id="landing-page">
         <div class="gift-card">
             <h2 style="font-family: 'Playfair Display'; margin-bottom: 5px;">Project: Romeo</h2>
@@ -124,18 +123,16 @@
         </div>
     </div>
 
-    <!-- STAGE 2: INTRO -->
     <div id="intro-sequence">
         <div class="intro-content">
             <p class="intro-text" id="intro-msg">INITIALIZING SYSTEM...</p>
         </div>
     </div>
 
-    <!-- STAGE 3: MAIN HUB -->
     <div id="main-page">
         <div id="home-view" style="max-width: 800px; margin: 0 auto; text-align: center;">
             <div id="live-clock" style="color: var(--gold); margin-bottom: 1rem; font-family: 'Orbitron'; font-size: 0.75rem; letter-spacing: 2px;">SYNCING...</div>
-            <h1 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 1.5rem; font-style: italic;">Happy 2nd Monthsary, Mahal</h1>
+            <h1 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 1.5rem; font-style: italic;">Happy 3rd Monthsary, Mahal</h1>
             
             <div style="display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 3rem;">
                 <div class="timer-unit"><span id="days">0</span><label style="font-size: 0.6rem;">DAYS</label></div>
@@ -145,9 +142,13 @@
             </div>
 
             <div class="gift-grid">
-                <button class="menu-btn" onclick="showView('letter-view')">
-                    <span style="font-weight: 600;">📜 2nd Monthsary Letter</span>
+                <button class="menu-btn" onclick="showView('third-month-view')">
+                    <span style="font-weight: 600;">📜 3rd Monthsary Letter</span>
                     <span style="color: var(--gold); font-size: 0.7rem;">NEW</span>
+                </button>
+                <button class="menu-btn" onclick="showView('letter-view')">
+                    <span>💌 2nd Monthsary Archive</span>
+                    <span>→</span>
                 </button>
                 <button class="menu-btn" onclick="showView('archive-view')">
                     <span>💖 1st Monthsary Archive</span>
@@ -158,8 +159,8 @@
                     <span>→</span>
                 </button>
                 <button class="menu-btn" onclick="showView('music-view')">
-                    <span>🎵 Our Playlist</span>
-                    <span>→</span>
+                    <span style="font-weight: 600;">🎵 Our Playlist</span>
+                    <span style="color: var(--gold); font-size: 0.7rem;">NEW</span>
                 </button>
                 <button class="menu-btn" onclick="showView('interview-view')">
                     <span>🎤 Project: Romeo Log</span>
@@ -168,10 +169,48 @@
             </div>
         </div>
 
-        <!-- 2nd MONTHSARY VIEW -->
+        <div id="third-month-view" class="gift-view">
+            <button class="back-btn" onclick="goHome()">← Return</button>
+            <div id="seal-wrapper-3" class="seal-wrapper" onclick="openPaper3()">
+                <div class="wax-seal"></div>
+                <p style="font-family: 'Dancing Script'; font-size: 1.3rem; color: #d8b4ff; margin-top: 20px;">Tap the heart to open your 3rd Monthsary letter...</p>
+            </div>
+            <div id="main-letter-3" class="paper-letter">
+                <h2 style="font-family: 'Dancing Script'; font-size: 2.2rem; color: #991b1b; margin-bottom: 25px;">My Dearest Mahal,</h2>
+                <div style="font-size: 1.05rem; white-space: pre-wrap; text-align: justify; color: #1a1a1a; font-family: 'Inter', sans-serif;">Hello mahal team bahay nanaman po noh? Well okay lang po yun, naiintindihan ko naman po lalo na para kay Tita. 💜
+
+At this moment magka-call po tayo habang nag-CCP ka nga po. HAHAHA. Habang kausap kita medyo naiiyak po ako kasi nawala yung bracelet na binigay mo. To be honest mahal, sobrang grateful po ako na dumating ka sa buhay ko. Kahit feeling ko minsan wala pa akong masyadong naaabot sa ngayon, pinili mo pa rin ako. Sobrang swerte ko po na ikaw ang naging mahal ko. 🥺💜
+
+Happy 3rd Monthsary po asawa kooooo. 🎉💜 Tatlong buwan na tayong magkasama at bawat araw na kasama kita ay isa sa mga pinakamasayang parte ng buhay ko. Salamat sa lahat ng pagmamahal, pag intindi, pag aalaga at sa pagiging ikaw. Hindi mo lang pinapasaya ang araw ko, pinapagaan mo rin ang lahat ng nararamdaman ko.
+
+Alam ko po na nasa bagong school ka na ngayon. Hindi na kita nakikita tulad ng dati kaya minsan nalulungkot po ako. Naiisip ko kung nakakain ka ba nang maayos, kung napapagod ka ba sa school, kung okay ka ba araw araw at kung may nag aalaga ba sa iyo kapag hindi ka okay. Pero mahal huwag ka pong mag alala. Kahit malayo ako at hindi kita nakikita palagi, hahanap at hahanap po ako ng paraan para maalagaan ka sa abot ng makakaya ko. 💜
+
+Palagi mong tandaan na sobrang proud po ako sa iyo. Proud ako sa lahat ng ginagawa mo, sa lahat ng efforts mo at sa bawat laban na hinaharap mo araw araw. Kahit gaano kahirap ang araw mo nandito lang po ako para makinig, umintindi at samahan ka.
+
+Mahal gusto ko ring malaman mo na hindi mo kailangang maging perfect para mahalin kita. Kapag masaya ka mamahalin kita. Kapag malungkot ka mamahalin kita. Kapag pagod ka mamahalin kita. Kapag may problema ka mamahalin kita. Sa lahat ng pagkakataon at sa lahat ng version mo, ikaw pa rin ang pipiliin ko. 💜
+
+Kapag napapagod ka, nalulungkot ka o nag ooverthink ka, sana maalala mo na hindi ka nag iisa. Nandito lang po ang asawa mo na handang makinig sa lahat ng kwento mo, sa lahat ng problema mo at sa lahat ng pangarap mo. Gusto kong makita kang masaya, ligtas at mas lalong umuunlad sa buhay.
+
+Please take care of yourself for me mahal. Kumain ka sa tamang oras, uminom ng maraming tubig, magpahinga kapag pagod at huwag masyadong magpupuyat. Kahit hindi ako nasa tabi mo araw araw, dala dala mo po lagi ang pagmamahal ko saan ka man magpunta. 🥺💜
+
+Thank you for staying. Thank you for choosing me every day. Thank you for loving me. Kahit anong mangyari, nandito lang po ako para sa iyo. Hindi man ako perpekto pero sisikapin kong maging taong masasandalan mo sa tuwa, lungkot at lahat ng bagay na pagdadaanan mo.
+
+Happy 3rd Monthsary asawa koooo. 💜🥺
+
+Mahal na mahal po kita. Lagi mong tandaan na may isang taong naniniwala sa iyo, proud sa iyo at handang piliin ka araw araw. Ikaw ang isa sa pinakamagandang nangyari sa buhay ko at sobrang nagpapasalamat ako na ikaw ang kasama ko ngayon.
+
+I love you so much asawa ko. Ngayon, bukas at sa mga susunod pang buwan at taon. Mwahhhh. 💜😘✨</div>
+                <p style="margin-top: 40px; font-family: 'Dancing Script'; font-size: 1.6rem; text-align: right; color: #991b1b;">Nagmamahal nang buong puso,<br>Romeo</p>
+                
+                <div style="text-align: center; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 30px; margin-top: 30px;">
+                    <a href="https://digibouquet.vercel.app/bouquet/e30cde7d-ed70-4474-a4a3-3d5a462ada76" target="_blank" class="bouquet-link">💐 Open 3rd Monthsary Bouquet</a>
+                </div>
+            </div>
+        </div>
+
         <div id="letter-view" class="gift-view">
             <button class="back-btn" onclick="goHome()">← Return</button>
-            <div id="seal-wrapper" onclick="openPaper()">
+            <div id="seal-wrapper" class="seal-wrapper" onclick="openPaper()">
                 <div class="wax-seal"></div>
                 <p style="font-family: 'Dancing Script'; font-size: 1.3rem; color: #d8b4ff; margin-top: 20px;">Tap the heart to read my promise...</p>
             </div>
@@ -179,7 +218,7 @@
                 <h2 style="font-family: 'Dancing Script'; font-size: 2.2rem; color: #991b1b; margin-bottom: 25px;">My Dearest Mahal,</h2>
                 <div style="font-size: 1.05rem; white-space: pre-wrap; text-align: justify; color: #1a1a1a;">Happy 2nd Monthsary, my wife!!
 
-Hello po mahal... gusto ko lang sabihin sa’yo na ginagawa ko po lahat ito habang nagma makeup ka po, may 10 bago pa man dumating ang ating 2nd Monthsary. To be honest, mahal... naiiyak ako habang nakikita kitang nag aayos, habang pinagmamasdan kita. Iiyak ako hindi dahil malungkot, kundi dahil sobrang pasasalamat at pagmamahal ang nararamdaman ko kasi mayroon na akong Asawa na napakaganda, hindi lang sa panlabas kundi pati sa puso, napaka unawa, napakabuti, at napakabait sa akin. Bawat galaw mo, bawat ngiti mo, bawat pagsisikap mo, lahat ‘yan ay nagpapatunay sa akin kung gaano ako ka swerte at napili ng tadhana na ikaw ang ibigay sa akin.
+Hello po mahal... gusto ko lang sabihin sa’yo na ginagawa ko po lahat ito habang nagma makeup ka po, may 10 bago pa man dumating ang ating 2nd Monthsary. To be honest, mahal... naiiyak ako habang nakikita kitang nag aayos, habang pinagmamasdan kita. Iiyak ako hindi dahil malungkot, kundi dahil sobrang pasasalamat at pagmamahal ang nararamdaman ko kasi mayroon na akong Asawa na napakaganda, hindi lang sa panlabas kundi pati sa puso, napaka unawa, napakabuti, at napakabait sa alkali. Bawat galaw mo, bawat ngiti mo, bawat pagsisikap mo, lahat ‘yan ay nagpapatunay sa akin kung gaano ako ka swerte at napili ng tadhana na ikaw ang ibigay sa kiwi.
 
 Alam mo naman po na wala naman akong kayang ibigay o ibahagi sa ngayon kundi ang pagmamahal ko lang sa’yo, kaya ito lang ang nagawa ko para sa’yo. Alam ko rin po... alam kong nagtatampo ka na minsan kasi hindi na kita nabibigyan ng sapat na oras gaya ng dati. Naiindihan ko kung bakit, at humihingi ako ng paumanhin kung nakakapagparamdam ako na parang hindi ka mahalaga o parang napapabayaan kita. Pasensya na po kung minsan ay abala ako o maraming ginagawa, at pakiramdam mo ay napapanghinaan ka ng loob dahil wala ako sa tabi mo o hindi tayo nakakapag usap nang matagal. Huwag po sana kayong mag isip na nababawasan ang pagmamahal ko, hinding hindi po mangyayari ‘yan.
 
@@ -191,12 +230,11 @@ Happy 2nd Monthsary, mahal ko. Nandito lang ako, palagi at habang buhay.</div>
                 <p style="margin-top: 40px; font-family: 'Dancing Script'; font-size: 1.6rem; text-align: right; color: #991b1b;">Nagmamahal nang buong puso,<br>Romeo</p>
                 
                 <div style="text-align: center; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 30px; margin-top: 30px;">
-                    <a href="https://digibouquet.net/create-bouquet?b=JTdCJTIyZiUyMiUzQSU1QiUyMm9yY2hpZCUyMiUyQyUyMmNhbWVsbGlhJTIyJTJDJTIyZGFpc3klMjIlMkMlMjJsb3R1cyUyMiUyQyUyMnR1bGlwJTIyJTJDJTIycGVvbnklMjIlMkMlMjJyb3NlJTIyJTJDJTIybGlseSUyMiU1RCUyQyUyMmclMjIlM0ElMjJncmVlbmVyeTIlMjIlMkMlMjJjJTIyJTNBJTIyd2F0ZXJjb2xvciUyMiUyQyUyMnRvJTIyJTNBJTIyTXklMjBXaWZlJTIwJTIyJTJDJTIyZnIlMjIlM0ElMjJKTCUyMiUyQyUyMm0lMjIlM0ElMjJIYXBweSUyMDJuZCUyME1vbnRoc2FyeSElMjIlMkMlMjJiZyUyMiUzQSUyMmxhdmVuZGVyLWRyZWFtJTIyJTdE" target="_blank" class="bouquet-link">💐 Open Monthsary Bouquet</a>
+                    <a href="https://digibouquet.net/create-bouquet?b=JTdCJTIyZiUyMiUzQSU1QiUyMm9yY2hpZCUyMiUyQyUyMmNhbWVsbGlhJTIyJTJDJTIyZGFpc3klMjIlMkMlMjJsb3R1cyUyMiUyQyUyMnR1bGlwJTIyJTJDJTIycGVvbnklMjIlMkMlMjJyb3NlJTIyJTJDJTIybGlseSUyMiU1RCUyQyUyMmSelection%202" target="_blank" class="bouquet-link">💐 Open Monthsary Bouquet</a>
                 </div>
             </div>
         </div>
 
-        <!-- 1st MONTHSARY ARCHIVE -->
         <div id="archive-view" class="gift-view">
             <button class="back-btn" onclick="goHome()">← Return</button>
             <div class="archive-card" style="text-align: center;">
@@ -209,7 +247,6 @@ Happy 2nd Monthsary, mahal ko. Nandito lang ako, palagi at habang buhay.</div>
             </div>
         </div>
 
-        <!-- BIRTHDAY VIEW -->
         <div id="bday-view" class="gift-view">
             <button class="back-btn" onclick="goHome()">← Return</button>
             <div class="archive-card" style="text-align: left; background: rgba(139, 92, 246, 0.05); border: 1px solid var(--gold);">
@@ -228,16 +265,18 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
             </div>
         </div>
 
-        <!-- MUSIC VIEW -->
         <div id="music-view" class="gift-view">
             <button class="back-btn" onclick="goHome()">← Return</button>
             <div class="archive-card" style="text-align: center;">
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0tgVpDi06FyKpA1z0VMD4v?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <p style="font-family: 'Dancing Script'; font-size: 1.2rem; color: var(--gold); margin-top: 15px;">"This reminds me of your smile."</p>
+                <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0xJ4Qk9lIisIjOrI8bLkNP?utm_source=generator&theme=0&si=4f88d37768fa4678" width="90%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <p style="font-family: 'Dancing Script'; font-size: 1.3rem; color: var(--gold); margin-top: 15px; line-height: 1.6;">
+                    Pinipili kita, makasama sa pagtanda.<br>
+                    Araw-araw walang iba, sa piling mo payapa na.<br><br>
+                    "This reminds me of your smile."
+                </p>
             </div>
         </div>
 
-        <!-- UPDATED INTERVIEW/LOG VIEW -->
         <div id="interview-view" class="gift-view">
             <button class="back-btn" onclick="goHome()">← Return</button>
             <div class="archive-card">
@@ -265,7 +304,7 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
 
     <script>
         const PIN = "031426";
-        const targetDate = new Date("2026-05-14T00:00:00").getTime();
+        const targetDate = new Date("2026-06-14T00:00:00").getTime();
 
         function startIntroSequence() {
             const input = document.getElementById('pin').value;
@@ -279,7 +318,7 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
                     "INITIALIZING SYSTEM...",
                     "LOADING MEMORIES FOR MAHAL...",
                     "SYNCING HEARTBEATS...",
-                    "PROJECT ROMEO: PHASE 2 ACTIVE"
+                    "PROJECT ROMEO: PHASE 3 ACTIVE"
                 ];
                 
                 let i = 0;
@@ -311,13 +350,22 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
         function goHome() {
             document.querySelectorAll('.gift-view').forEach(v => v.style.display = 'none');
             document.getElementById('home-view').style.display = 'block';
+            
+            // Reset Letters to closed state
             document.getElementById('main-letter').style.display = 'none';
             document.getElementById('seal-wrapper').style.display = 'block';
+            document.getElementById('main-letter-3').style.display = 'none';
+            document.getElementById('seal-wrapper-3').style.display = 'block';
         }
 
         function openPaper() {
             document.getElementById('seal-wrapper').style.display = 'none';
             document.getElementById('main-letter').style.display = 'block';
+        }
+        
+        function openPaper3() {
+            document.getElementById('seal-wrapper-3').style.display = 'none';
+            document.getElementById('main-letter-3').style.display = 'block';
         }
 
         function initApp() {
@@ -346,5 +394,182 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
             }
         }
     </script>
+
+    <div class="night"></div>
+    <div class="flowers">
+      <div class="flower flower--1">
+        <div class="flower__leafs flower__leafs--1">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+          <div class="flower__line__leaf flower__line__leaf--5"></div>
+          <div class="flower__line__leaf flower__line__leaf--6"></div>
+        </div>
+      </div>
+
+      <div class="flower flower--2">
+        <div class="flower__leafs flower__leafs--2">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <div class="flower flower--3">
+        <div class="flower__leafs flower__leafs--3">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <div class="grow-ans" style="--d:1.2s">
+        <div class="flower__g-long">
+          <div class="flower__g-long__top"></div>
+          <div class="flower__g-long__bottom"></div>
+        </div>
+      </div>
+
+      <div class="growing-grass">
+        <div class="flower__grass flower__grass--1">
+          <div class="flower__grass--top"></div>
+          <div class="flower__grass--bottom"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+          <div class="flower__grass__overlay"></div>
+        </div>
+      </div>
+
+      <div class="growing-grass">
+        <div class="flower__grass flower__grass--2">
+          <div class="flower__grass--top"></div>
+          <div class="flower__grass--bottom"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+          <div class="flower__grass__overlay"></div>
+        </div>
+      </div>
+
+      <div class="grow-ans" style="--d:2.4s">
+        <div class="flower__g-right flower__g-right--1">
+          <div class="leaf"></div>
+        </div>
+      </div>
+
+      <div class="grow-ans" style="--d:2.8s">
+        <div class="flower__g-right flower__g-right--2">
+          <div class="leaf"></div>
+        </div>
+      </div>
+
+      <div class="grow-ans" style="--d:2.8s">
+        <div class="flower__g-front">
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8"><div class="flower__g-front__leaf"></div></div>
+          <div class="flower__g-front__line"></div>
+        </div>
+      </div>
+
+      <div class="grow-ans" style="--d:3.2s">
+        <div class="flower__g-fr">
+          <div class="leaf"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
+        </div>
+      </div>
+
+      <div class="long-g long-g--0">
+        <div class="grow-ans" style="--d:3s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d:2.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d:3.4s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+      </div>
+
+      <div class="long-g long-g--1">
+        <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d:3.8s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d:4s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--3"></div></div>
+      </div>
+
+      <div class="long-g long-g--2">
+        <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d:4.4s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d:4.6s"><div class="leaf leaf--3"></div></div>
+      </div>
+    </div>
 </body>
 </html>

@@ -17,7 +17,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--deep-bg); color: var(--text-light); min-height: 100vh; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--deep-bg); color: var(--text-light); min-height: 100vh; overflow-x: hidden; position: relative; }
 
         /* ----- Landing / PIN ----- */
         #landing-page {
@@ -49,7 +49,7 @@
         @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
         /* ----- Main Page Layout ----- */
-        #main-page { display: none; padding: 3rem 1.5rem; opacity: 0; transition: opacity 2s ease; }
+        #main-page { display: none; padding: 3rem 1.5rem; opacity: 0; transition: opacity 2s ease; position: relative; z-index: 10; }
         
         .timer-unit { 
             background: rgba(139, 92, 246, 0.1); padding: 0.8rem; border-radius: 12px; 
@@ -76,7 +76,7 @@
             font-size: 2.5rem; color: white; box-shadow: 0 4px 20px rgba(0,0,0,0.6);
             border: 4px solid #7f1d1d; transition: 0.4s; position: relative; margin: 0 auto;
         }
-        .wax-seal:after { content: '♥'; position: absolute; }
+        .wax-seal:after { content: '♥'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
         .seal-wrapper:hover .wax-seal { transform: scale(1.1) rotate(10deg); background: #b91c1c; }
 
         .paper-letter {
@@ -110,6 +110,8 @@
         .back-btn { background: none; border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 30px; cursor: pointer; margin-bottom: 20px; font-size: 0.8rem; }
         .firefly { position: fixed; width: 2px; height: 2px; background: var(--accent-blue); border-radius: 50%; pointer-events: none; opacity: 0.5; z-index: 1; }
 
+        /* Background Flower Section Fallback Styling */
+        .flowers { position: fixed; bottom: 0; left: 0; width: 100vw; height: 200px; pointer-events: none; z-index: 0; opacity: 0.3; overflow: hidden; }
     </style>
 </head>
 <body>
@@ -132,7 +134,7 @@
     <div id="main-page">
         <div id="home-view" style="max-width: 800px; margin: 0 auto; text-align: center;">
             <div id="live-clock" style="color: var(--gold); margin-bottom: 1rem; font-family: 'Orbitron'; font-size: 0.75rem; letter-spacing: 2px;">SYNCING...</div>
-            <h1 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 1.5rem; font-style: italic;">Happy 3rd Monthsary, Mahal</h1>
+            <h1 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 1.5rem; font-style: italic;">Happy 4th Monthsary, Mahal</h1>
             
             <div style="display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 3rem;">
                 <div class="timer-unit"><span id="days">0</span><label style="font-size: 0.6rem;">DAYS</label></div>
@@ -142,9 +144,13 @@
             </div>
 
             <div class="gift-grid">
-                <button class="menu-btn" onclick="showView('third-month-view')">
-                    <span style="font-weight: 600;">📜 3rd Monthsary Letter</span>
+                <button class="menu-btn" onclick="showView('fourth-month-view')">
+                    <span style="font-weight: 600;">✨ 4th Monthsary Letter</span>
                     <span style="color: var(--gold); font-size: 0.7rem;">NEW</span>
+                </button>
+                <button class="menu-btn" onclick="showView('third-month-view')">
+                    <span>📜 3rd Monthsary Archive</span>
+                    <span>→</span>
                 </button>
                 <button class="menu-btn" onclick="showView('letter-view')">
                     <span>💌 2nd Monthsary Archive</span>
@@ -169,6 +175,34 @@
             </div>
         </div>
 
+        <!-- 4th Monthsary View Section -->
+        <div id="fourth-month-view" class="gift-view">
+            <button class="back-btn" onclick="goHome()">← Return</button>
+            <div id="seal-wrapper-4" class="seal-wrapper" onclick="openPaper4()">
+                <div class="wax-seal"></div>
+                <p style="font-family: 'Dancing Script'; font-size: 1.3rem; color: #d8b4ff; margin-top: 20px;">Tap the heart to open your 4th Monthsary letter...</p>
+            </div>
+            <div id="main-letter-4" class="paper-letter">
+                <h2 style="font-family: 'Dancing Script'; font-size: 2.2rem; color: #991b1b; margin-bottom: 25px;">My Dearest Mahal,</h2>
+                <div style="font-size: 1.05rem; white-space: pre-wrap; text-align: justify; color: #1a1a1a; font-family: 'Inter', sans-serif;">Hii po, mahal ko. 
+
+Thank you po sa lahat ng ginagawa mo para sa akin. Sobrang thankful po ako kasi kahit zero days pa lang ako noon, pinili mo pa rin ako. Alam ko pong maraming iba diyan na baka mas okay, mas deserving, o mas kayang ibigay ang gusto mo, pero ako pa rin ang pinili mo. Hanggang ngayon, hindi pa rin po ako makapaniwala na naging tayo, at araw-araw nagpapasalamat po ako dahil nandiyan ka.
+
+Thank you rin po sa pagtrato mo sa akin nang tama, sa pagiging patient mo, sa pag-intindi sa akin, at sa pagmamahal na binibigay mo. Ang saya-saya po ng puso ko kapag ikaw ang kausap ko, at kahit simpleng oras lang na kasama kita, sapat na iyon para mapasaya ako.
+
+Gusto ko lang pong sabihin na sana huwag mo akong pagsawaan. Hayaan mo lang po akong mahalin ka araw-araw, lambingin ka palagi, at iparamdam sa'yo kung gaano ka kahalaga sa akin. Pangako ko po na patuloy akong mag-i-improve para maging partner na deserve mo. Hindi man ako perfect, hindi po mapapagod ang puso kong piliin ka sa bawat araw.
+
+Thank you po kasi ikaw ang naging tahanan ng puso ko. Ikaw ang favorite person ko, ang pahinga ko, at ang taong gusto kong makasama sa lahat ng bagay. Sana marami pa tayong monthsary na sabay nating ipagdiwang hanggang sa maging years na.
+
+Happy 4th monthsary po ulit, mahal ko. Super miss na miss na po kita. Gusto na po kitang mayakap nang mahigpit at hindi na bumitaw. Lagi mong tatandaan na nandito lang po ako, palagi. Mahal na mahal po kita, higit pa sa kaya kong ipaliwanag. Mwahhh.</div>
+                <p style="margin-top: 40px; font-family: 'Dancing Script'; font-size: 1.6rem; text-align: right; color: #991b1b;">Nagmamahal nang buong puso,<br>Romeo</p>
+                
+                <div style="text-align: center; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 30px; margin-top: 30px;">
+                    <a href="https://digibouquet.vercel.app/bouquet/50768206-3d81-4042-be0c-9d12b903f61b" target="_blank" class="bouquet-link">💐 Open 4th Monthsary Bouquet</a>
+                </div>
+            </div>
+        </div>
+
         <div id="third-month-view" class="gift-view">
             <button class="back-btn" onclick="goHome()">← Return</button>
             <div id="seal-wrapper-3" class="seal-wrapper" onclick="openPaper3()">
@@ -189,7 +223,7 @@ Palagi mong tandaan na sobrang proud po ako sa iyo. Proud ako sa lahat ng ginaga
 
 Mahal gusto ko ring malaman mo na hindi mo kailangang maging perfect para mahalin kita. Kapag masaya ka mamahalin kita. Kapag malungkot ka mamahalin kita. Kapag pagod ka mamahalin kita. Kapag may problema ka mamahalin kita. Sa lahat ng pagkakataon at sa lahat ng version mo, ikaw pa rin ang pipiliin ko. 💜
 
-Kapag napapagod ka, nalulungkot ka o nag ooverthink ka, sana maalala mo na hindi ka nag iisa. Nandito lang po ang asawa mo na handang makinig sa lahat ng kwento mo, sa lahat ng problema mo at sa lahat ng pangarap mo. Gusto kong makita kang masaya, ligtas at mas lalong umuunlad sa buhay.
+Kapag napapagod ka, nalulungkot ka o nag ooverthink ka, sana maalala mo na hindi ka nag iisa. Nandito lang po ang asawa mo na handang makinig sa lahat ng kwento mo, sa lahat ng problema mo at sa lahat ng pangarap mo. Gusto kong makita kang masaya, ligtas at mas laron umuunlad sa buhay.
 
 Please take care of yourself for me mahal. Kumain ka sa tamang oras, uminom ng maraming tubig, magpahinga kapag pagod at huwag masyadong magpupuyat. Kahit hindi ako nasa tabi mo araw araw, dala dala mo po lagi ang pagmamahal ko saan ka man magpunta. 🥺💜
 
@@ -304,7 +338,7 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
 
     <script>
         const PIN = "031426";
-        const targetDate = new Date("2026-06-14T00:00:00").getTime();
+        const targetDate = new Date("2026-07-14T00:00:00").getTime();
 
         function startIntroSequence() {
             const input = document.getElementById('pin').value;
@@ -318,7 +352,7 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
                     "INITIALIZING SYSTEM...",
                     "LOADING MEMORIES FOR MAHAL...",
                     "SYNCING HEARTBEATS...",
-                    "PROJECT ROMEO: PHASE 3 ACTIVE"
+                    "PROJECT ROMEO: PHASE 4 ACTIVE"
                 ];
                 
                 let i = 0;
@@ -351,11 +385,13 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
             document.querySelectorAll('.gift-view').forEach(v => v.style.display = 'none');
             document.getElementById('home-view').style.display = 'block';
             
-            // Reset Letters to closed state
+            // Reset Letters to closed state cleanly
             document.getElementById('main-letter').style.display = 'none';
             document.getElementById('seal-wrapper').style.display = 'block';
             document.getElementById('main-letter-3').style.display = 'none';
             document.getElementById('seal-wrapper-3').style.display = 'block';
+            document.getElementById('main-letter-4').style.display = 'none';
+            document.getElementById('seal-wrapper-4').style.display = 'block';
         }
 
         function openPaper() {
@@ -366,6 +402,11 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
         function openPaper3() {
             document.getElementById('seal-wrapper-3').style.display = 'none';
             document.getElementById('main-letter-3').style.display = 'block';
+        }
+
+        function openPaper4() {
+            document.getElementById('seal-wrapper-4').style.display = 'none';
+            document.getElementById('main-letter-4').style.display = 'block';
         }
 
         function initApp() {
@@ -404,171 +445,8 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
           <div class="flower__leaf flower__leaf--3"></div>
           <div class="flower__leaf flower__leaf--4"></div>
           <div class="flower__white-circle"></div>
-          <div class="flower__light flower__light--1"></div>
-          <div class="flower__light flower__light--2"></div>
-          <div class="flower__light flower__light--3"></div>
-          <div class="flower__light flower__light--4"></div>
-          <div class="flower__light flower__light--5"></div>
-          <div class="flower__light flower__light--6"></div>
-          <div class="flower__light flower__light--7"></div>
-          <div class="flower__light flower__light--8"></div>
         </div>
-        <div class="flower__line">
-          <div class="flower__line__leaf flower__line__leaf--1"></div>
-          <div class="flower__line__leaf flower__line__leaf--2"></div>
-          <div class="flower__line__leaf flower__line__leaf--3"></div>
-          <div class="flower__line__leaf flower__line__leaf--4"></div>
-          <div class="flower__line__leaf flower__line__leaf--5"></div>
-          <div class="flower__line__leaf flower__line__leaf--6"></div>
-        </div>
-      </div>
-
-      <div class="flower flower--2">
-        <div class="flower__leafs flower__leafs--2">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__white-circle"></div>
-          <div class="flower__light flower__light--1"></div>
-          <div class="flower__light flower__light--2"></div>
-          <div class="flower__light flower__light--3"></div>
-          <div class="flower__light flower__light--4"></div>
-          <div class="flower__light flower__light--5"></div>
-          <div class="flower__light flower__light--6"></div>
-          <div class="flower__light flower__light--7"></div>
-          <div class="flower__light flower__light--8"></div>
-        </div>
-        <div class="flower__line">
-          <div class="flower__line__leaf flower__line__leaf--1"></div>
-          <div class="flower__line__leaf flower__line__leaf--2"></div>
-          <div class="flower__line__leaf flower__line__leaf--3"></div>
-          <div class="flower__line__leaf flower__line__leaf--4"></div>
-        </div>
-      </div>
-
-      <div class="flower flower--3">
-        <div class="flower__leafs flower__leafs--3">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__white-circle"></div>
-          <div class="flower__light flower__light--1"></div>
-          <div class="flower__light flower__light--2"></div>
-          <div class="flower__light flower__light--3"></div>
-          <div class="flower__light flower__light--4"></div>
-          <div class="flower__light flower__light--5"></div>
-          <div class="flower__light flower__light--6"></div>
-          <div class="flower__light flower__light--7"></div>
-          <div class="flower__light flower__light--8"></div>
-        </div>
-        <div class="flower__line">
-          <div class="flower__line__leaf flower__line__leaf--1"></div>
-          <div class="flower__line__leaf flower__line__leaf--2"></div>
-          <div class="flower__line__leaf flower__line__leaf--3"></div>
-          <div class="flower__line__leaf flower__line__leaf--4"></div>
-        </div>
-      </div>
-
-      <div class="grow-ans" style="--d:1.2s">
-        <div class="flower__g-long">
-          <div class="flower__g-long__top"></div>
-          <div class="flower__g-long__bottom"></div>
-        </div>
-      </div>
-
-      <div class="growing-grass">
-        <div class="flower__grass flower__grass--1">
-          <div class="flower__grass--top"></div>
-          <div class="flower__grass--bottom"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
-          <div class="flower__grass__overlay"></div>
-        </div>
-      </div>
-
-      <div class="growing-grass">
-        <div class="flower__grass flower__grass--2">
-          <div class="flower__grass--top"></div>
-          <div class="flower__grass--bottom"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
-          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
-          <div class="flower__grass__overlay"></div>
-        </div>
-      </div>
-
-      <div class="grow-ans" style="--d:2.4s">
-        <div class="flower__g-right flower__g-right--1">
-          <div class="leaf"></div>
-        </div>
-      </div>
-
-      <div class="grow-ans" style="--d:2.8s">
-        <div class="flower__g-right flower__g-right--2">
-          <div class="leaf"></div>
-        </div>
-      </div>
-
-      <div class="grow-ans" style="--d:2.8s">
-        <div class="flower__g-front">
-          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1"><div class="flower__g-front__leaf"></div></div>
-          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2"><div class="flower__g-front__leaf"></div></div>
-          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3"><div class="flower__g-front__leaf"></div></div>
-          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4"><div class="flower__g-front__leaf"></div></div>
-          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5"><div class="flower__g-front__leaf"></div></div>
-          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6"><div class="flower__g-front__leaf"></div></div>
-          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7"><div class="flower__g-front__leaf"></div></div>
-          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8"><div class="flower__g-front__leaf"></div></div>
-          <div class="flower__g-front__line"></div>
-        </div>
-      </div>
-
-      <div class="grow-ans" style="--d:3.2s">
-        <div class="flower__g-fr">
-          <div class="leaf"></div>
-          <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
-          <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
-          <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
-          <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
-          <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
-          <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
-          <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
-          <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
-        </div>
-      </div>
-
-      <div class="long-g long-g--0">
-        <div class="grow-ans" style="--d:3s"><div class="leaf leaf--0"></div></div>
-        <div class="grow-ans" style="--d:2.2s"><div class="leaf leaf--1"></div></div>
-        <div class="grow-ans" style="--d:3.4s"><div class="leaf leaf--2"></div></div>
-        <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
-      </div>
-
-      <div class="long-g long-g--1">
-        <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--0"></div></div>
-        <div class="grow-ans" style="--d:3.8s"><div class="leaf leaf--1"></div></div>
-        <div class="grow-ans" style="--d:4s"><div class="leaf leaf--2"></div></div>
-        <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--3"></div></div>
-      </div>
-
-      <div class="long-g long-g--2">
-        <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
-        <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
-        <div class="grow-ans" style="--d:4.4s"><div class="leaf leaf--2"></div></div>
-        <div class="grow-ans" style="--d:4.6s"><div class="leaf leaf--3"></div></div>
+        <div class="flower__line"></div>
       </div>
     </div>
 </body>

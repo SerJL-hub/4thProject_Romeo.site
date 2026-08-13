@@ -109,9 +109,6 @@
         }
         .back-btn { background: none; border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 30px; cursor: pointer; margin-bottom: 20px; font-size: 0.8rem; }
         .firefly { position: fixed; width: 2px; height: 2px; background: var(--accent-blue); border-radius: 50%; pointer-events: none; opacity: 0.5; z-index: 1; }
-
-        /* Background Flower Section Fallback Styling */
-        .flowers { position: fixed; bottom: 0; left: 0; width: 100vw; height: 200px; pointer-events: none; z-index: 0; opacity: 0.3; overflow: hidden; }
     </style>
 </head>
 <body>
@@ -145,7 +142,7 @@
 
             <div class="gift-grid">
                 <button class="menu-btn" onclick="showView('fourth-month-view')">
-                    <span style="font-weight: 600;">✨ 4th Monthsary Letter</span>
+                    <span style="font-weight: 600;">📜 4th Monthsary Letter</span>
                     <span style="color: var(--gold); font-size: 0.7rem;">NEW</span>
                 </button>
                 <button class="menu-btn" onclick="showView('third-month-view')">
@@ -166,7 +163,7 @@
                 </button>
                 <button class="menu-btn" onclick="showView('music-view')">
                     <span style="font-weight: 600;">🎵 Our Playlist</span>
-                    <span style="color: var(--gold); font-size: 0.7rem;">NEW</span>
+                    <span>→</span>
                 </button>
                 <button class="menu-btn" onclick="showView('interview-view')">
                     <span>🎤 Project: Romeo Log</span>
@@ -203,6 +200,7 @@ Happy 4th monthsary po ulit, mahal ko. Super miss na miss na po kita. Gusto na p
             </div>
         </div>
 
+        <!-- 3rd Monthsary View Section -->
         <div id="third-month-view" class="gift-view">
             <button class="back-btn" onclick="goHome()">← Return</button>
             <div id="seal-wrapper-3" class="seal-wrapper" onclick="openPaper3()">
@@ -242,6 +240,7 @@ I love you so much asawa ko. Ngayon, bukas at sa mga susunod pang buwan at taon.
             </div>
         </div>
 
+        <!-- 2nd Monthsary View Section -->
         <div id="letter-view" class="gift-view">
             <button class="back-btn" onclick="goHome()">← Return</button>
             <div id="seal-wrapper" class="seal-wrapper" onclick="openPaper()">
@@ -338,7 +337,7 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
 
     <script>
         const PIN = "031426";
-        const targetDate = new Date("2026-07-14T00:00:00").getTime();
+        const targetDate = new Date("2026-08-14T00:00:00").getTime();
 
         function startIntroSequence() {
             const input = document.getElementById('pin').value;
@@ -410,44 +409,48 @@ Happy Birthday again. You mean more than you think. 💜💙</div>
         }
 
         function initApp() {
-            setInterval(() => {
-                const now = new Date().getTime();
-                const diff = targetDate - now;
-                const opt = { timeZone: 'Asia/Manila', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-                document.getElementById('live-clock').innerText = "STATION_TAYABAS // " + new Intl.DateTimeFormat('en-US', opt).format(new Date());
+            updateClockAndTimer();
+            setInterval(updateClockAndTimer, 1000);
+            createFireflies(30);
+        }
 
-                if (diff > 0) {
-                    document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    document.getElementById('secs').innerText = Math.floor((diff % (1000 * 60)) / 1000);
-                } else {
-                    document.querySelectorAll('.timer-unit span').forEach(el => el.innerText = "0");
-                }
-            }, 1000);
+        function updateClockAndTimer() {
+            const now = new Date();
+            const clockEl = document.getElementById('live-clock');
+            if (clockEl) {
+                clockEl.innerText = 'SYSTEM TIME: ' + now.toLocaleString('en-US', { timeZoneName: 'short' });
+            }
 
-            for(let i=0; i<20; i++) {
-                let f = document.createElement('div');
-                f.className = 'firefly';
-                f.style.left = Math.random()*100+'vw'; f.style.top = Math.random()*100+'vh';
-                f.style.animation = `float ${10 + Math.random()*10}s infinite linear`;
-                document.body.appendChild(f);
+            const diff = targetDate - now.getTime();
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = d;
+                document.getElementById('hours').innerText = h;
+                document.getElementById('mins').innerText = m;
+                document.getElementById('secs').innerText = s;
+            } else {
+                document.getElementById('days').innerText = '0';
+                document.getElementById('hours').innerText = '0';
+                document.getElementById('mins').innerText = '0';
+                document.getElementById('secs').innerText = '0';
+            }
+        }
+
+        function createFireflies(count) {
+            for (let i = 0; i < count; i++) {
+                const firefly = document.createElement('div');
+                firefly.className = 'firefly';
+                firefly.style.left = Math.random() * 100 + 'vw';
+                firefly.style.top = Math.random() * 100 + 'vh';
+                firefly.style.animation = `float ${3 + Math.random() * 5}s ease-in-out infinite`;
+                firefly.style.animationDelay = `${Math.random() * 5}s`;
+                document.body.appendChild(firefly);
             }
         }
     </script>
-
-    <div class="night"></div>
-    <div class="flowers">
-      <div class="flower flower--1">
-        <div class="flower__leafs flower__leafs--1">
-          <div class="flower__leaf flower__leaf--1"></div>
-          <div class="flower__leaf flower__leaf--2"></div>
-          <div class="flower__leaf flower__leaf--3"></div>
-          <div class="flower__leaf flower__leaf--4"></div>
-          <div class="flower__white-circle"></div>
-        </div>
-        <div class="flower__line"></div>
-      </div>
-    </div>
 </body>
 </html>
